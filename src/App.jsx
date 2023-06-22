@@ -17,11 +17,11 @@ function App() {
   ])
   return (
     <section className=''>
-      <div className="md:max-w-[840px] mx-auto relative">
+      <div className="md:max-w-[840px] sm:mx-auto relative pt-5 px-4">
         <Header isDark={isDark} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
-        <p className='text-center w-full mt-4'>Drag and drop to reorder list</p>
+        {/* <p className='text-center w-full mt-4'>Drag and drop to reorder list</p> */}
       </div>
     </section>
   )
