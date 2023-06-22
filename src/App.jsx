@@ -21,7 +21,7 @@ function App() {
         <Header isDark={isDark} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
-        {/* <p className='text-center w-full mt-4'>Drag and drop to reorder list</p> */}
+        <p className='text-center w-full mt-4'>Drag and drop to reorder list 2morrow</p>
       </div>
     </section>
   )
