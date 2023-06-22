@@ -8,8 +8,12 @@ function App() {
   const [completedTodos, setCompletedTodos] = useState([])
   const [activeTodos, setActiveTodos] = useState([])
   const [allTodos, setAllTodos] = useState([
-    { id: 1, title: 'Todo 1', isCompleted: false },
-    { id: 2, title: 'Todo 2', isCompleted: true },
+    { id: 1, title: 'Complete online javaScript course', completed: true },
+    { id: 2, title: 'Jog around the park 3x', completed: false },
+    { id: 3, title: '10 minutes meditation', completed: false },
+    { id: 4, title: 'Read for 1 hour', completed: false },
+    { id: 5, title: 'Pick up groceries', completed: false },
+    { id: 6, title: 'Complete Todo App on Frontend Mentor', completed: false },
   ])
   return (
     <section className=''>
@@ -17,7 +21,7 @@ function App() {
         <Header isDark={isDark} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
-        <p className='fixed bottom-10 text-center w-full'>Drag and drop to reorder list</p>
+        <p className='text-center w-full mt-4'>Drag and drop to reorder list</p>
       </div>
     </section>
   )

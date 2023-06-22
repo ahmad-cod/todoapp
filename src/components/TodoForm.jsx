@@ -2,16 +2,22 @@ import { useState } from "react"
 
 const TodoForm = ({ setTodos }) => {
   const [newTodo, setNewTodo] = useState('')
-  const addTodoItem = e => {
+  
+  const handleAddTodo = e => {
     e.preventDefault()
 
-    const randomId = Math.floor(Math.random() * 300)
-    console.log(newTodo)
-    setTodos(prevTodos => prevTodos.concat({ id: randomId, title: newTodo, isCompleted: false }))
-    setNewTodo('')
+    if(newTodo.trim() !== '') {
+      const todo = {
+        id: new Date().getTime(),
+        title: newTodo,
+        completed: false
+      }
+      setTodos(prevTodos => prevTodos.concat(todo))
+      setNewTodo('')
+  }
   } 
   return (
-    <form onSubmit={addTodoItem}>
+    <form onSubmit={handleAddTodo}>
         <input
          type="text"
          value={newTodo}

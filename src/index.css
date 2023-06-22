@@ -5,7 +5,8 @@
 
 @layer components {
   .todo_container {
-    @apply flex items-center justify-between px-6 py-4 bg-ddesaturatedBlue text-lgrayishBlue border-b-2 border-slate-700
+    @apply flex items-center justify-between px-6 py-4 bg-ddesaturatedBlue text-lgrayishBlue
+     border-b-2 border-slate-700
   }
 }
 
@@ -24,4 +25,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.checkmark:hover {
+  border-color: rgb(100, 189, 248);
 }
