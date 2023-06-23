@@ -17,13 +17,15 @@ const TodoForm = ({ setTodos }) => {
   }
   } 
   return (
-    <form onSubmit={handleAddTodo}>
+    <form onSubmit={handleAddTodo} className="todo_container w-full mb-5 rounded-md">
+        <span className='w-4 h-4 rounded-full border-lgrayishBlue border-[1px] '>
+        </span>
         <input
          type="text"
          value={newTodo}
          placeholder="Create a new todo..."
          onChange={({ target }) => setNewTodo(target.value)}
-         className="todo_container w-full mb-5 rounded-md"
+         className="todo_container w-full rounded-md border-none outline-none py-1"
         />
     </form>
   )

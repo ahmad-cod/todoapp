@@ -4,7 +4,7 @@ import TodoForm from './components/TodoForm'
 import Header from './components/Header'
 
 function App() {
-  const [isDark, setIsDark] = useState(true)
+  const [theme, setTheme] = useState('dark')
   const [completedTodos, setCompletedTodos] = useState([])
   const [activeTodos, setActiveTodos] = useState([])
   const [allTodos, setAllTodos] = useState([
@@ -15,10 +15,15 @@ function App() {
     { id: 5, title: 'Pick up groceries', completed: false },
     { id: 6, title: 'Complete Todo App on Frontend Mentor', completed: false },
   ])
+
+  const toggleTheme = () => {
+    setTheme(theme => theme === 'dark' ? 'light' : 'dark')
+  }
+
   return (
     <section className=''>
       <div className="md:max-w-[840px] sm:mx-auto relative pt-5 px-4">
-        <Header isDark={isDark} />
+        <Header theme={theme} toggleTheme={toggleTheme} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
         <p className='text-center w-full mt-4'>Drag and drop to reorder list 2morrow</p>

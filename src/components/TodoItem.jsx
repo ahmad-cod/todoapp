@@ -27,7 +27,7 @@ const TodoItem = ({ todo, setAllTodos }) => {
         className="flex gap-x-4 relative items-center"
         onClick={() => handleToggleTodo(todo.id)}
       >
-        <span className='w-4 h-4 rounded-full border-lgrayishBlue border-2 '>
+        <span className='w-4 h-4 rounded-full border-lgrayishBlue border-[1px] '>
         { 
           todo.completed && (<img src={checkIcon} alt='checkmark icon' />)
         }
