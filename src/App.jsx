@@ -23,7 +23,9 @@ function App() {
   }
 
   return (
-    <section className='app'>
+    <section 
+      className='app bg-no-repeat dark:bg-veryDarkBlue bg-white dark:bg-mobileDarkTheme dark:sm:bg-desktopDarkTheme bg-mobileLightTheme sm:bg-desktopLightTheme'
+    >
       <div className="md:max-w-[600px] sm:mx-auto relative pt-5 px-4 sm:px-0">
         <Header theme={theme} toggleTheme={toggleTheme} />
         <TodoForm setTodos={setAllTodos} />

@@ -29,18 +29,3 @@
 .checkmark:hover {
   border-color: rgb(100, 189, 248);
 }
-
-.dark .app {
-  background-image: url("./assets/images/bg-desktop-dark.jpg");
-  background-repeat: no-repeat;
-}
-
-.light {
-  background-color: #f2f2f2;
-}
-
-.light .app {
-  background-color: #f2f2f2;
-  background-image: url("./assets/images/bg-desktop-light.jpg");
-  background-repeat: no-repeat;
-}
