@@ -30,3 +30,7 @@
   background: #fff;
   color: hsl(235, 19%, 35%);
 }
+
+.checkmark {
+  background-color: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
