@@ -32,7 +32,7 @@ const TodoItem = ({ todo, setAllTodos }) => {
           todo.completed && (<img src={checkIcon} alt='checkmark icon' />)
         }
         </span>
-        <p>{ todo.title }</p>
+        <p>{ todo.text }</p>
       </div>
       <img src={crossIcon} alt="cross Icon" className='' onClick={() => handleDeleteTodo(todo.id)} />
     </div>

@@ -2,19 +2,13 @@ import { useState } from 'react'
 import TodoItems from './components/TodoItems'
 import TodoForm from './components/TodoForm'
 import Header from './components/Header'
+import todoList from './data.json'
 
 function App() {
   const [theme, setTheme] = useState('dark')
   const [completedTodos, setCompletedTodos] = useState([])
   const [activeTodos, setActiveTodos] = useState([])
-  const [allTodos, setAllTodos] = useState([
-    { id: 1, title: 'Complete online javaScript course', completed: true },
-    { id: 2, title: 'Jog around the park 3x', completed: false },
-    { id: 3, title: '10 minutes meditation', completed: false },
-    { id: 4, title: 'Read for 1 hour', completed: false },
-    { id: 5, title: 'Pick up groceries', completed: false },
-    { id: 6, title: 'Complete Todo App on Frontend Mentor', completed: false },
-  ])
+  const [allTodos, setAllTodos] = useState(todoList)
 
   const toggleTheme = () => {
     setTheme(theme => theme === 'dark' ? 'light' : 'dark')
@@ -22,7 +16,7 @@ function App() {
 
   return (
     <section className=''>
-      <div className="md:max-w-[840px] sm:mx-auto relative pt-5 px-4">
+      <div className="md:max-w-[600px] sm:mx-auto relative pt-5 px-4 sm:px-0">
         <Header theme={theme} toggleTheme={toggleTheme} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
