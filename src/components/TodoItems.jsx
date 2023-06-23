@@ -4,7 +4,9 @@ import FilterBar from './FilterBar'
 
 const TotalTodos = ({ todos, setFilter, handleClearCompleted }) => {
   const totalLeft = todos.filter(todo => todo.completed === false)
-  return (<div className='todo_container border-none text-lgrayishBlue'>
+  return (<div 
+    className='todo_container border-none text-ddesaturatedBlue dark:text-lgrayishBlue'
+    >
     <p>{ totalLeft.length } items left</p>
     <div className="hidden sm:block">
       <FilterBar setFilter={setFilter} />
@@ -39,7 +41,7 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
 
 
   return (<>
-  <div className="rounded-lg px-1 py-0 bg-ddesaturatedBlue shadow-2xl">
+  <div className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
     {renderedTodoList}
     <TotalTodos todos={allTodos} setFilter={setFilter} handleClearCompleted={clearCompletedTodos} />
   </div>

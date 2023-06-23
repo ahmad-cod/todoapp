@@ -9,7 +9,7 @@ const TodoForm = ({ setTodos }) => {
     if(newTodo.trim() !== '') {
       const todo = {
         id: new Date().getTime(),
-        title: newTodo,
+        text: newTodo,
         completed: false
       }
       setTodos(prevTodos => prevTodos.concat(todo))
@@ -17,7 +17,7 @@ const TodoForm = ({ setTodos }) => {
   }
   } 
   return (
-    <form onSubmit={handleAddTodo} className="todo_container w-full mb-3 sm:mb-7 py-3 sm:py-4 shadow-md rounded-md">
+    <form onSubmit={handleAddTodo} className="todo_container w-full mb-3 sm:mb-7 py-1 sm:py-4 shadow-md rounded-md">
         <span className='w-4 h-4 rounded-full border-lgrayishBlue border-[1px] '>
         </span>
         <input
@@ -25,7 +25,7 @@ const TodoForm = ({ setTodos }) => {
          value={newTodo}
          placeholder="Create a new todo..."
          onChange={({ target }) => setNewTodo(target.value)}
-         className="todo_container w-full rounded-md border-none outline-none py-1"
+         className="todo_container w-full rounded-md border-none outline-none py-2"
         />
     </form>
   )

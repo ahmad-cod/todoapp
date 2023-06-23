@@ -11,6 +11,7 @@ export default {
         'veryDarkBlue': 'hsl(235, 21%, 11%)',
         'ddesaturatedBlue': 'hsl(235, 24%, 19%)',
         'lgrayishBlue': 'hsl(234, 39%, 85%)',
+        'vlgrayishBlue': 'hsl(236, 33%, 92%)',
       },
       backgroundImage: {
         'mobileDarkTheme': "url('/src/assets/images/bg-mobile-dark.jpg')",
