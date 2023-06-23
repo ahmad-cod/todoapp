@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TodoItems from './components/TodoItems'
 import TodoForm from './components/TodoForm'
 import Header from './components/Header'
@@ -8,7 +8,17 @@ function App() {
   const [theme, setTheme] = useState('dark')
   const [completedTodos, setCompletedTodos] = useState([])
   const [activeTodos, setActiveTodos] = useState([])
-  const [allTodos, setAllTodos] = useState(todoList)
+
+  const MY_TODOS = localStorage.getItem('myTodos') ? JSON.parse(localStorage.getItem('myTodos')) : [...todoList]
+
+  const [allTodos, setAllTodos] = useState(MY_TODOS)
+
+  useEffect(() => {
+    document.body.className = theme
+
+    localStorage.setItem('myTodos', JSON.stringify(allTodos))
+  }, [theme, allTodos])
+
 
   const toggleTheme = () => {
     setTheme(theme => theme === 'dark' ? 'light' : 'dark')
