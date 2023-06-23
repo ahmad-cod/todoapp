@@ -29,7 +29,7 @@ const TodoItem = ({ todo, setAllTodos }) => {
       >
         <span className='w-4 h-4 rounded-full border-lgrayishBlue border-[1px] '>
         { 
-          todo.completed && (<img src={checkIcon} alt='checkmark icon' className='p-1 bg-vlgrayishBlue rounded-full' />)
+          todo.completed && (<img src={checkIcon} alt='checkmark icon' className='p-1 bg-vdgrayishBlueLight rounded-full' />)
         }
         </span>
         <p>{ todo.text }</p>
