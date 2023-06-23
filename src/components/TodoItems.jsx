@@ -24,13 +24,13 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
       return todo.completed
     }
   })
-  const ListOfAllTodos = todos.map( todo => <TodoItem key={todo.id} todo={todo} setAllTodos={setAllTodos} />)
+  const renderedTodoList = todos.map( todo => <TodoItem key={todo.id} todo={todo} setAllTodos={setAllTodos} />)
   const clearCompletedTodos = () => setAllTodos(todos => todos.filter(todo => !todo.completed))
 
 
   return (<>
   <div className="rounded-lg px-1 py-0 bg-ddesaturatedBlue">
-    {ListOfAllTodos}
+    {renderedTodoList}
     <TotalTodos todos={allTodos} handleClearCompleted={clearCompletedTodos} />
   </div>
   <FilterBar setFilter={setFilter} />
