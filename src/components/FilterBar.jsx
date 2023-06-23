@@ -1,24 +1,18 @@
 
 const FilterBar = ({ setFilter }) => {
 
-  const filterBarStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around'
-  }
-
   return (
-    <div className="todo_container justify-around mt-5">
+    <div className="todo_container justify-center gap-x-8 border-none">
       <a 
-        className="text-blue-500"
+        className="text-blue-500 cursor-pointer"
         onClick={() => setFilter('all')}
       >All</a>
       <a 
-        className="hover:text-blue-400"
+        className="hover:text-blue-400 cursor-pointer"
         onClick={() => setFilter('active')}
       >Active</a>
       <a 
-        className="hover:text-blue-400"
+        className="hover:text-blue-400 cursor-pointer"
         onClick={() => setFilter('completed')}
       >Completed</a>
     </div>

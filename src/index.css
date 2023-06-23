@@ -25,7 +25,3 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
-.checkmark:hover {
-  border-color: rgb(100, 189, 248);
-}

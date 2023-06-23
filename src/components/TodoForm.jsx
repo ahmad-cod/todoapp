@@ -17,7 +17,7 @@ const TodoForm = ({ setTodos }) => {
   }
   } 
   return (
-    <form onSubmit={handleAddTodo} className="todo_container w-full mb-5 rounded-md">
+    <form onSubmit={handleAddTodo} className="todo_container w-full mb-3 sm:mb-7 py-3 sm:py-4 shadow-md rounded-md">
         <span className='w-4 h-4 rounded-full border-lgrayishBlue border-[1px] '>
         </span>
         <input
