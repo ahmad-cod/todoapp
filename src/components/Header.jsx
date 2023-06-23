@@ -5,9 +5,14 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <header className='flex items-center justify-between text-white text-[2.5rem] mt-1 mb-5'>
       <h1 className='tracking-widest uppercase font-bold'>Todo</h1>
-      <div className="theme" onClick={toggleTheme}>
+      <button 
+        className="theme" 
+        aria-label='toggle theme'
+        onClick={toggleTheme}
+      >
         <img src={ (theme === 'dark') ? sunIcon : moonIcon } alt="" />
-      </div>
+      </button>
+
     </header>
   )
 }
