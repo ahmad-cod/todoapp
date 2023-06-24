@@ -11,11 +11,17 @@ function App() {
 
   const [todos, setTodos] = useState(MY_TODOS)
 
+  const updateTodosInLocalStorage = () => localStorage.setItem('myTodos', JSON.stringify(todos))
+
   useEffect(() => {
     document.body.className = theme
 
-    localStorage.setItem('myTodos', JSON.stringify(todos))
-  }, [theme, todos])
+  }, [theme])
+
+  useEffect(() => {
+    updateTodosInLocalStorage()
+
+  }, [todos])
 
 
   const toggleTheme = () => {
