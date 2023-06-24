@@ -17,7 +17,7 @@ const TodoItem = ({ todo, setAllTodos }) => {
     setIsChecked(!isChecked)
   }
 
-  const completed = todo.completed ? 'line-through' : 'none'
+  const completed = todo.completed ? 'line-through dark:text-dgrayishBlue' : 'none'
 
 
   return (

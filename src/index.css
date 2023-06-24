@@ -8,6 +8,10 @@
     @apply flex items-center justify-between px-6 py-4 bg-white dark:bg-ddesaturatedBlue text-ddesaturatedBlue
     dark:text-lgrayishBlue border-white shadow-inner dark:border-b-2 dark:border-slate-700 
   }
+  .app {
+    @apply bg-no-repeat dark:bg-veryDarkBlue bg-white dark:bg-mobileDarkTheme 
+      dark:sm:bg-desktopDarkTheme bg-mobileLightTheme sm:bg-desktopLightTheme
+  }
 }
 
 

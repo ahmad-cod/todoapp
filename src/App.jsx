@@ -24,14 +24,14 @@ function App() {
 
   return (
     <section 
-      className='app bg-no-repeat dark:bg-veryDarkBlue bg-white dark:bg-mobileDarkTheme dark:sm:bg-desktopDarkTheme bg-mobileLightTheme sm:bg-desktopLightTheme'
+      className='app '
     >
       <div className="md:max-w-[600px] sm:mx-auto relative pt-5 px-4 sm:px-0">
         <Header theme={theme} toggleTheme={toggleTheme} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
       </div>
-      <p className='text-center w-full mt-4 sm:mt-8 text-lgrayishBlue pb-4'>Drag and drop to reorder list.</p>
+      <p className='text-center w-full mt-4 sm:mt-8 text-lgrayishBlue pb-4 dark:text-dgrayishBlue'>Drag and drop to reorder list.</p>
     </section>
   )
 }

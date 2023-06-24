@@ -13,6 +13,7 @@ export default {
       colors: {
         'veryDarkBlue': 'hsl(235, 21%, 11%)',
         'ddesaturatedBlue': 'hsl(235, 24%, 19%)',
+        'dgrayishBlue': 'hsl(234, 11%, 52%)',
         'lgrayishBlue': 'hsl(234, 39%, 85%)',
         'vlgrayishBlue': 'hsl(236, 33%, 92%)',
         'vdgrayishBlueLight': 'hsl(235, 19%, 35%)',

@@ -6,7 +6,7 @@ import FilterBar from './FilterBar'
 const TotalTodos = ({ todos, setFilter, handleClearCompleted }) => {
   const totalLeft = todos.filter(todo => todo.completed === false)
   return (<div 
-    className='todo_container border-none text-ddesaturatedBlue dark:text-lgrayishBlue'
+    className='todo_container border-none text-ddesaturatedBlue dark:text-dgrayishBlue'
     >
     <p>{ totalLeft.length } items left</p>
     <div className="hidden sm:block">
