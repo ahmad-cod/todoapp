@@ -30,8 +30,8 @@ function App() {
         <Header theme={theme} toggleTheme={toggleTheme} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
-        <p className={`text-center w-full mt-4 sm:mt-8 text-lgrayishBlue`}>Drag and drop to reorder list.</p>
       </div>
+      <p className='text-center w-full mt-4 sm:mt-8 text-lgrayishBlue pb-4'>Drag and drop to reorder list.</p>
     </section>
   )
 }

@@ -10,7 +10,7 @@ const Header = ({ theme, toggleTheme }) => {
         aria-label='toggle theme'
         onClick={toggleTheme}
       >
-        <img src={ (theme === 'dark') ? sunIcon : moonIcon } alt="" className='w-8 h-8 -mt-2' />
+        <img src={ (theme === 'dark') ? sunIcon : moonIcon } alt="" className='w-7 h-7 -mt-2' />
       </button>
 
     </header>
