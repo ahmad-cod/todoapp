@@ -27,11 +27,11 @@ const TodoItem = ({ todo, setAllTodos }) => {
         className="flex gap-x-4 relative items-center"
         onClick={() => handleToggleTodo(todo.id)}
       >
-        <span className='w-4 h-4 rounded-full border-lgrayishBlue bg-checkGradient border-[1px] '>
+        <span className='w-5 h-5 rounded-full border-lgrayishBlue bg-checkGradient border-[1px] '>
         { 
           todo.completed && (<img src={checkIcon} alt='checkmark icon' 
             className='bg-gradient-to-r from-firstGradientColor to-secondGradientColor 
-            p-[2px] h-4 w-4 text-2xl bg-checkGradient rounded-full' />)
+            p-[4px] h-5 w-5 text-2xl bg-checkGradient rounded-full' />)
         }
         </span>
         <p>{ todo.text }</p>
