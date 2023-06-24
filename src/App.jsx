@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import TodoItems from './components/TodoItems'
 import TodoForm from './components/TodoForm'
-import Header from './components/Header'
+import Header from './components/TodoHeader'
 import todoList from './data.json'
 
 const MY_TODOS = localStorage.getItem('myTodos') ? JSON.parse(localStorage.getItem('myTodos')) : [...todoList]
