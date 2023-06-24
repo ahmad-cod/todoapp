@@ -28,7 +28,7 @@ const TodoItem = ({ todo, setTodos }) => {
             p-[4px] h-5 w-5 text-2xl bg-checkGradient rounded-full' />)
         }
         </span>
-        <p>{ text }</p>
+        <p className='hover:text-white'>{ text }</p>
       </div>
       <img src={crossIcon} alt="cross Icon" className='' onClick={() => handleDeleteTodo(id)} />
     </div>
