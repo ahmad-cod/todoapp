@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import TodoItem from './TodoItem'
 import FilterBar from './FilterBar'
 
@@ -36,15 +37,52 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
         return true
     }
   })
-  const renderedTodoList = todos.map( todo => <TodoItem key={todo.id} todo={todo} setAllTodos={setAllTodos} />)
+
+  const handleOnDragEnd = (result) => {
+    // If dropped outside a valid area
+    if(!result.destination) return
+
+    const updatedItems = Array.from(allTodos)
+
+    const [reorderedItem] = updatedItems.splice(result.source.index, 1)
+
+    updatedItems.splice(result.destination.index, 0, reorderedItem)
+
+    setAllTodos(updatedItems)
+  }
+  // const renderedTodoList = todos.map( todo => <TodoItem key={todo.id} todo={todo} setAllTodos={setAllTodos} />)
   const clearCompletedTodos = () => setAllTodos(todos => todos.filter(todo => !todo.completed))
 
 
   return (<>
-  <div className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
-    {renderedTodoList}
+  <DragDropContext onDragEnd={handleOnDragEnd}>
+    <Droppable droppableId='droppable'>
+      {(provided) => (
+        <div 
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+          className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
+            {todos.map((todo, index) => (
+              <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
+                {(provided) => (
+                  <div 
+                  {...provided.draggableProps} 
+                  {...provided.dragHandleProps} 
+                  ref={provided.innerRef}
+                    className=""
+                  >
+                  <TodoItem todo={todo} setAllTodos={setAllTodos} />
+                  </div>
+                )}
+
+              </Draggable>
+            ))}
+            {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
+  </DragDropContext>
     <TotalTodos todos={allTodos} setFilter={setFilter} handleClearCompleted={clearCompletedTodos} />
-  </div>
   <div className="mt-5 block sm:hidden">
     <FilterBar setFilter={setFilter} />
   </div>
