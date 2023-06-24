@@ -26,12 +26,12 @@ function App() {
     <section 
       className='app '
     >
-      <div className="md:max-w-[600px] sm:mx-auto relative pt-5 px-4 sm:px-0">
+      <div className="sm:max-w-[560px] sm:mx-auto relative pt-5 px-4 sm:px-0 shadow-2xl">
         <Header theme={theme} toggleTheme={toggleTheme} />
         <TodoForm setTodos={setAllTodos} />
         <TodoItems allTodos={allTodos} setAllTodos={setAllTodos} />
       </div>
-      <p className='text-center w-full mt-4 sm:mt-8 text-lgrayishBlue pb-4 dark:text-dgrayishBlue'>Drag and drop to reorder list.</p>
+      <p className='text-center w-full mt-4 sm:mt-6 text-lgrayishBlue pb-4 dark:text-dgrayishBlue'>Drag and drop to reorder list.</p>
     </section>
   )
 }
