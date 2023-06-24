@@ -9,7 +9,7 @@
     dark:text-lgrayishBlue border-white shadow-inner dark:border-b-2 dark:border-slate-700 
   }
   .app {
-    @apply bg-no-repeat dark:bg-veryDarkBlue bg-white dark:bg-mobileDarkTheme 
+    @apply bg-no-repeat bg-contain sm:bg-auto dark:bg-veryDarkBlue bg-white dark:bg-mobileDarkTheme 
       dark:sm:bg-desktopDarkTheme bg-mobileLightTheme sm:bg-desktopLightTheme
   }
 }
