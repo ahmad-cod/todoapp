@@ -70,7 +70,7 @@ const TodoItems = ({ todos, setTodos }) => {
                   {...provided.draggableProps} 
                   {...provided.dragHandleProps} 
                   ref={provided.innerRef}
-                    className=""
+                    className="shadow-2xl"
                   >
                   <TodoItem todo={todo} setTodos={setTodos} />
                   </div>
