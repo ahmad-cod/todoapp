@@ -1,19 +1,19 @@
 import { useState } from "react"
 
 const TodoForm = ({ setTodos }) => {
-  const [newTodo, setNewTodo] = useState('')
+  const [newTodoText, setNewTodoText] = useState('')
   
   const handleAddTodo = e => {
     e.preventDefault()
 
-    if(newTodo.trim() !== '') {
+    if(newTodoText.trim() !== '') {
       const todo = {
-        id: new Date().getTime(),
-        text: newTodo,
+        id: Date.now(),
+        text: newTodoText,
         completed: false
       }
       setTodos(prevTodos => prevTodos.concat(todo))
-      setNewTodo('')
+      setNewTodoText('')
   }
   } 
   return (
@@ -22,9 +22,9 @@ const TodoForm = ({ setTodos }) => {
         </span>
         <input
          type="text"
-         value={newTodo}
+         value={newTodoText}
          placeholder="Create a new todo..."
-         onChange={({ target }) => setNewTodo(target.value)}
+         onChange={({ target }) => setNewTodoText(target.value)}
          className="todo_container w-full rounded-md border-none outline-none py-2"
         />
     </form>
