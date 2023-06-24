@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import TodoItem from './TodoItem'
 import FilterBar from './FilterBar'
@@ -20,48 +20,50 @@ const TotalTodos = ({ todos, setFilter, handleClearCompleted }) => {
     </p>
   </div>)
 }
+
 const TodoItems = ({ todos, setTodos }) => {
-  const [filter, setFilter] = useState('all')
+  const [filter, setFilter] = useState({ value: 'all' })
 
   if (todos.length === 0) return <p> Todo list is empty, add one.</p> 
 
-  const todoList = todos.filter(todo => {
-    // since we have multiple test cases switch is better than if else
-    switch (filter) {
+  const filteredTodoList = useMemo(() => {
+    switch (filter.value) {
       case 'active':
-        return !todo.completed
+        return todos.filter((todo) => !todo.completed)
       case 'completed':
-        return todo.completed
+        return todos.filter((todo) => todo.completed)
       default:
-        return true
+        return todos;
     }
-  })
+  }, [filter.value, todos])
 
-  const handleOnDragEnd = (result) => {
-    // If dropped outside a valid area
-    if(!result.destination) return
+  const handleTodoDragEnd = useCallback(() => { 
+    (result) => {
+      // If dropped outside a valid area
+      if(!result.destination) return
 
-    const updatedItems = Array.from(todos)
+      const updatedTodos = Array.from(todos)
 
-    const [reorderedItem] = updatedItems.splice(result.source.index, 1)
+      const [reorderedTodo] = updatedTodos.splice(result.source.index, 1)
 
-    updatedItems.splice(result.destination.index, 0, reorderedItem)
+      updatedTodos.splice(result.destination.index, 0, reorderedTodo)
 
-    setTodos(updatedItems)
-  }
+      setTodos(updatedTodos)
+    }
+}, [todos, setTodos])
 
   const clearCompletedTodos = () => setTodos(todos => todos.filter(todo => !todo.completed))
 
 
   return (<>
-  <DragDropContext onDragEnd={handleOnDragEnd}>
+  <DragDropContext onDragEnd={handleTodoDragEnd}>
     <Droppable droppableId='droppable'>
       {(provided) => (
         <div 
           {...provided.droppableProps}
           ref={provided.innerRef}
           className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
-            {todoList.map((todo, index) => (
+            {filteredTodoList.map((todo, index) => (
               <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
                 {(provided) => (
                   <div 
