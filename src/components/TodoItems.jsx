@@ -20,13 +20,12 @@ const TotalTodos = ({ todos, setFilter, handleClearCompleted }) => {
     </p>
   </div>)
 }
-const TodoItems = ({ allTodos, setAllTodos }) => {
+const TodoItems = ({ todos, setTodos }) => {
   const [filter, setFilter] = useState('all')
 
-  console.log('all todos', allTodos)
-  if (allTodos.length === 0) return <p> Todo list is empty, add one.</p> 
+  if (todos.length === 0) return <p> Todo list is empty, add one.</p> 
 
-  const todos = allTodos.filter(todo => {
+  const todoList = todos.filter(todo => {
     // since we have multiple test cases switch is better than if else
     switch (filter) {
       case 'active':
@@ -42,16 +41,16 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
     // If dropped outside a valid area
     if(!result.destination) return
 
-    const updatedItems = Array.from(allTodos)
+    const updatedItems = Array.from(todos)
 
     const [reorderedItem] = updatedItems.splice(result.source.index, 1)
 
     updatedItems.splice(result.destination.index, 0, reorderedItem)
 
-    setAllTodos(updatedItems)
+    setTodos(updatedItems)
   }
-  // const renderedTodoList = todos.map( todo => <TodoItem key={todo.id} todo={todo} setAllTodos={setAllTodos} />)
-  const clearCompletedTodos = () => setAllTodos(todos => todos.filter(todo => !todo.completed))
+
+  const clearCompletedTodos = () => setTodos(todos => todos.filter(todo => !todo.completed))
 
 
   return (<>
@@ -62,7 +61,7 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
           {...provided.droppableProps}
           ref={provided.innerRef}
           className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
-            {todos.map((todo, index) => (
+            {todoList.map((todo, index) => (
               <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
                 {(provided) => (
                   <div 
@@ -71,7 +70,7 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
                   ref={provided.innerRef}
                     className=""
                   >
-                  <TodoItem todo={todo} setAllTodos={setAllTodos} />
+                  <TodoItem todo={todo} setTodos={setTodos} />
                   </div>
                 )}
 
@@ -82,7 +81,7 @@ const TodoItems = ({ allTodos, setAllTodos }) => {
       )}
     </Droppable>
   </DragDropContext>
-    <TotalTodos todos={allTodos} setFilter={setFilter} handleClearCompleted={clearCompletedTodos} />
+    <TotalTodos todos={todos} setFilter={setFilter} handleClearCompleted={clearCompletedTodos} />
   <div className="mt-5 block sm:hidden">
     <FilterBar setFilter={setFilter} />
   </div>

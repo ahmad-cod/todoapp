@@ -2,14 +2,14 @@ import checkIcon from '../assets/images/icon-check.svg'
 import { useState } from 'react'
 import crossIcon from '../assets/images/icon-cross.svg'
 
-const TodoItem = ({ todo, setAllTodos }) => {
+const TodoItem = ({ todo, setTodos }) => {
   const [isChecked, setIsChecked] = useState(true)
 
   const handleDeleteTodo = (id) => {
-    setAllTodos(todos => todos.filter(todo => todo.id !== id))
+    setTodos(todos => todos.filter(todo => todo.id !== id))
   }
   const handleToggleTodo = (id) => {
-    setAllTodos(todos => todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo ))
+    setTodos(todos => todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo ))
 
   }
   const handleRadioChange = ({ target }) => {
