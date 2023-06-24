@@ -26,6 +26,7 @@ export default {
         'mobileLightTheme': "url('/src/assets/images/bg-mobile-light.jpg')",
         'desktopDarkTheme': "url('/src/assets/images/bg-desktop-dark.jpg')",
         'desktopLightTheme': "url('/src/assets/images/bg-desktop-light.jpg')",
+        'completedIcon': "url('/src/assets/images/icon-check.svg')",
       }
     },
   },
