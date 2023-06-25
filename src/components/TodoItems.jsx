@@ -3,24 +3,6 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import TodoItem from './TodoItem'
 import FilterBar from './FilterBar'
 
-const TotalTodos = ({ todos, setFilter, handleClearCompleted }) => {
-  const totalLeft = todos.filter(todo => todo.completed === false)
-  return (<div 
-    className='todo_container border-none text-ddesaturatedBlue dark:text-dgrayishBlue'
-    >
-    <p>{ totalLeft.length } items left</p>
-    <div className="hidden sm:block">
-      <FilterBar setFilter={setFilter} />
-    </div>
-    <p 
-      className='cursor-pointer hover:text-red-300'
-      onClick={handleClearCompleted}
-    >
-      Clear Completed
-    </p>
-  </div>)
-}
-
 const TodoItems = ({ todos, setTodos }) => {
   const [filter, setFilter] = useState({ value: 'all' })
 
@@ -52,42 +34,54 @@ const TodoItems = ({ todos, setTodos }) => {
     }
 }, [todos, setTodos])
 
-  const clearCompletedTodos = () => setTodos(todos => todos.filter(todo => !todo.completed))
+  const clearCompletedTodos = useCallback(() => {
+    setTodos(todos => todos.filter(todo => !todo.completed))
+  }, [setTodos])
 
 
-  return (<>
-  <DragDropContext onDragEnd={handleTodoDragEnd}>
-    <Droppable droppableId='droppable'>
-      {(provided) => (
-        <div 
-          {...provided.droppableProps}
-          ref={provided.innerRef}
-          className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
-            {filteredTodoList.map((todo, index) => (
-              <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
-                {(provided) => (
-                  <div 
-                  {...provided.draggableProps} 
-                  {...provided.dragHandleProps} 
-                  ref={provided.innerRef}
-                    className="shadow-2xl"
-                  >
-                  <TodoItem todo={todo} setTodos={setTodos} />
-                  </div>
-                )}
+  return (
+    <>
+      <DragDropContext onDragEnd={handleTodoDragEnd}>
+        <Droppable droppableId='droppable'>
+          {(provided) => (
+            <div 
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="rounded-lg px-1 py-0 dark:bg-ddesaturatedBlue">
+                {filteredTodoList.map((todo, index) => (
+                  <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
+                    {(provided) => (
+                      <div 
+                      {...provided.draggableProps} 
+                      {...provided.dragHandleProps} 
+                      ref={provided.innerRef}
+                        className="shadow-2xl"
+                      >
+                      <TodoItem todo={todo} setTodos={setTodos} />
+                      </div>
+                    )}
 
-              </Draggable>
-            ))}
-            {provided.placeholder}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      <div className='todo_container border-none text-ddesaturatedBlue dark:text-dgrayishBlue'>
+        <p>{filteredTodoList.filter((todo) => !todo.completed).length} items left</p>
+        <div className='hidden sm:block'>
+          <FilterBar setFilter={setFilter} />
         </div>
-      )}
-    </Droppable>
-  </DragDropContext>
-    <TotalTodos todos={todos} setFilter={setFilter} handleClearCompleted={clearCompletedTodos} />
-  <div className="mt-5 block sm:hidden">
-    <FilterBar setFilter={setFilter} />
-  </div>
-  </>)
+        <p className='cursor-pointer hover:text-red-300' onClick={clearCompletedTodos}>
+          Clear Completed
+        </p>
+      </div>
+      <div className='mt-5 block sm:hidden'>
+        <FilterBar setFilter={setFilter} />
+      </div>
+    </>
+  )
 }
 
 export default TodoItems
