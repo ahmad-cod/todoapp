@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import sunIcon from '../assets/images/icon-sun.svg'
 import moonIcon from '../assets/images/icon-moon.svg'
 
@@ -15,6 +16,11 @@ const TodoHeader = ({ theme = 'dark', toggleTheme }) => {
 
     </header>
   )
+}
+
+TodoHeader.propTypes = {
+  theme: PropTypes.string.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 }
 
 export default TodoHeader

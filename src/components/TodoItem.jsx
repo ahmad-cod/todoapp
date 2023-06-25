@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import checkIcon from '../assets/images/icon-check.svg'
 import crossIcon from '../assets/images/icon-cross.svg'
 
@@ -33,6 +34,11 @@ const TodoItem = ({ todo, setTodos }) => {
       <img src={crossIcon} alt="cross Icon" className='' onClick={() => handleDeleteTodo(id)} />
     </div>
   )
+}
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  setTodos: PropTypes.func.isRequired,
 }
 
 export default TodoItem

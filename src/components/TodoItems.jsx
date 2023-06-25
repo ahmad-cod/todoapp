@@ -1,44 +1,44 @@
 import { useState, useMemo, useCallback } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import PropTypes from 'prop-types'
 import TodoItem from './TodoItem'
 import FilterBar from './FilterBar'
 
 const TodoItems = ({ todos, setTodos }) => {
   const [filter, setFilter] = useState({ value: 'all' })
-
-  if (todos.length === 0) return <p> Todo list is empty, add one.</p> 
-
+  
   const filteredTodoList = useMemo(() => {
     switch (filter.value) {
       case 'active':
         return todos.filter((todo) => !todo.completed)
-      case 'completed':
-        return todos.filter((todo) => todo.completed)
-      default:
-        return todos;
-    }
-  }, [filter.value, todos])
-
-  const handleTodoDragEnd = useCallback(() => { 
+        case 'completed':
+          return todos.filter((todo) => todo.completed)
+          default:
+            return todos;
+          }
+        }, [filter.value, todos])
+        
+        const handleTodoDragEnd = useCallback(() => { 
     (result) => {
       // If dropped outside a valid area
       if(!result.destination) return
-
+      
       const updatedTodos = Array.from(todos)
-
+      
       const [reorderedTodo] = updatedTodos.splice(result.source.index, 1)
-
+      
       updatedTodos.splice(result.destination.index, 0, reorderedTodo)
-
+      
       setTodos(updatedTodos)
     }
-}, [todos, setTodos])
-
+  }, [todos, setTodos])
+  
   const clearCompletedTodos = useCallback(() => {
     setTodos(todos => todos.filter(todo => !todo.completed))
   }, [setTodos])
-
-
+  
+  if (todos.length === 0) return <p> Todo list is empty, add one.</p> 
+  
   return (
     <>
       <DragDropContext onDragEnd={handleTodoDragEnd}>
@@ -82,6 +82,11 @@ const TodoItems = ({ todos, setTodos }) => {
       </div>
     </>
   )
+}
+
+TodoItems.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setTodos: PropTypes.func.isRequired,
 }
 
 export default TodoItems

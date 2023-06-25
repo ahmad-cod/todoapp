@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 
 const FilterBar = ({ setFilter }) => {
 
@@ -17,6 +18,10 @@ const FilterBar = ({ setFilter }) => {
       >Completed</a>
     </div>
   )
+}
+
+FilterBar.propTypes = {
+  setFilter: PropTypes.func.isRequired,
 }
 
 export default FilterBar
