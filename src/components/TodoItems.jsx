@@ -11,15 +11,14 @@ const TodoItems = ({ todos, setTodos }) => {
     switch (filter.value) {
       case 'active':
         return todos.filter((todo) => !todo.completed)
-        case 'completed':
-          return todos.filter((todo) => todo.completed)
-          default:
-            return todos;
-          }
-        }, [filter.value, todos])
+      case 'completed':
+        return todos.filter((todo) => todo.completed)
+      default:
+        return todos;
+        }
+     }, [filter.value, todos])
         
-        const handleTodoDragEnd = useCallback(() => { 
-    (result) => {
+    const handleTodoDragEnd = useCallback((result) => {
       // If dropped outside a valid area
       if(!result.destination) return
       
@@ -30,8 +29,7 @@ const TodoItems = ({ todos, setTodos }) => {
       updatedTodos.splice(result.destination.index, 0, reorderedTodo)
       
       setTodos(updatedTodos)
-    }
-  }, [todos, setTodos])
+    }, [todos, setTodos])
   
   const clearCompletedTodos = useCallback(() => {
     setTodos(todos => todos.filter(todo => !todo.completed))
